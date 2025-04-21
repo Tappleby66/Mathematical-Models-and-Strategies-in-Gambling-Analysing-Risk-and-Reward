@@ -305,8 +305,8 @@ def plot(thing, num, filename="blackjack_strategy.pdf"):
     df["Decision_Char"] = df["Decision"].map(decision_map)
 
 
-    # Define the color palette for each decision (S, H, D)
-    decision_colors = {"S": "blue", "H": "red", "D": "orange"}  # Customize these colors
+   
+    decision_colors = {"S": "blue", "H": "red", "D": "orange"} 
 
     # Separate heatmaps for Ace = 0 and Ace = 1
     for ace_value in [0, 1]:
@@ -314,7 +314,7 @@ def plot(thing, num, filename="blackjack_strategy.pdf"):
         df_pivot_num = df_filtered.pivot(index="Player Hand", columns="Dealer Hand", values="Decision")
         df_pivot_char = df_filtered.pivot(index="Player Hand", columns="Dealer Hand", values="Decision_Char")
 
-        # Ensure correct ordering of the heatmap
+        
         plt.figure(figsize=(8, 6))
 
         # Plot heatmap with numerical values for color mapping
@@ -332,11 +332,11 @@ def plot(thing, num, filename="blackjack_strategy.pdf"):
         plt.xlabel("Dealer Hand")
         plt.ylabel("Player Hand")
 
-        # Save to PDF (separate files for each Ace value)
+        
         filename_split = filename.replace(".pdf", f"_ace{ace_value}.pdf")
         plt.savefig(filename_split, format="pdf", bbox_inches="tight")
 
-        # Show plot
+        
 x=runall()
 plot(x[0],0)
 display_fitness_scores(x[1],x[2],"1.pdf")
