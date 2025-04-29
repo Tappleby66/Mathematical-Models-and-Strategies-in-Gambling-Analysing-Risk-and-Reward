@@ -66,11 +66,11 @@ def get_true_count(running_count, shoe):
     remaining_decks = remaining_cards / 52
     true_count = floor(running_count / remaining_decks)
     true_count = max(-8, min(8, true_count))
-    if true_count <= -4:
+    if true_count <= 0:
         bet_size = 0 # Minimum bet
-    elif -3 <= true_count <= 1:
+    elif 1<= true_count <= 2:
         bet_size = 1 # Small bet
-    elif 2 <= true_count <= 4:
+    elif 3 <= true_count <= 4:
         bet_size = 2  # Medium bet
     else:
         bet_size = 3  # Maximum bet
@@ -291,7 +291,8 @@ def display_fitness_scores(fitness_scores,fitness_scores2,filename):
 
 def plot(thing, num, filename="blackjack_strategy.pdf"):
     strategy = thing.iloc[num]["Dict"]
-
+    betsize = thing.iloc[num]["Bet_sizes"]
+    print(betsize)
     # Convert to DataFrame
     df = pd.DataFrame([(k[0], k[1], k[2], v) for k, v in strategy.items()],
                       columns=["Ace", "Player Hand", "Dealer Hand", "Decision"])
